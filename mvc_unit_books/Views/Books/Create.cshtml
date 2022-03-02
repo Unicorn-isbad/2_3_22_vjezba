@@ -1,0 +1,56 @@
+﻿@model mvc_unit_books.Models.Book
+@*
+inject direktiva najkorisnija je značajka uvedena u ASP.NET Core. 
+
+Koristeći ASP.NET Core ugrađeni kontejner za ubrizgavanje ovisnosti (eng.: dependency injection), lako možemo ubaciti ovisnosti u kontrolere i poglede. 
+
+Ovdje smo ubrizgali klasu BookRepository i odmah joj dodijelili svojstvo koje će biti objekt koji je dostupan unutar ovog pogleda
+
+Provjerite datoteku Program.cs, linije koda 8-10
+*@
+@inject mvc_unit_books.Repository.BooksRepository BooksRepository
+
+@{
+    ViewData["Title"] = "Unos nove knjige";
+    var genres = BooksRepository.GetGenres();
+}
+
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>Knjiga</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Genre" class="control-label"></label>
+                <select asp-items="@(new SelectList(genres))" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PublishDate" class="control-label"></label>
+                <input asp-for="PublishDate" class="form-control" />
+                <span asp-validation-for="PublishDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Kreiraj knjigu" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Home" asp-action="Index">Povratak na početnu stranicu</a>
+</div>
