@@ -1,8 +1,9 @@
-﻿@{
+﻿@model List<mvc_unit_books.Models.Book>
+@{
     ViewData["Title"] = "Home Page";
-    var books = ViewData["Books"] as List<Book>;
+    
 }
-@if (books == null)
+@if (Model == null)
 {
     <h1>Welcome</h1>
 }
@@ -16,7 +17,7 @@ else{
                     <th>Date</th>
                 </tr>
 
-            @foreach (var book in books)
+            @foreach (var book in Model)
             {
                 <tr>
                     <td>@book.Title</td>

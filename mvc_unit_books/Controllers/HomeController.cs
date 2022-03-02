@@ -9,15 +9,15 @@ namespace mvc_unit_books.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
 
         public IActionResult Index()
         {
-            ViewData["Books"] = BooksRepository.book_list;
-            return View();
+            var books = BooksRepository.book_list;
+            return View(books);
         }
 
         public IActionResult Privacy()
