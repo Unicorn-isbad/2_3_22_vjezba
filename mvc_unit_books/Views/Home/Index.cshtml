@@ -1,8 +1,31 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var books = ViewData["Books"] as List<Book>;
 }
+@if (books == null)
+{
+    <h1>Welcome</h1>
+}
+else{
+    <div class = "table-wrapper">
+        <table class="fl-table">
+                <tr class="table-header">
+                    <th>Title</th>
+                    <th>Genre</th>
+                    <th>Price</th>
+                    <th>Date</th>
+                </tr>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+            @foreach (var book in books)
+            {
+                <tr>
+                    <td>@book.Title</td>
+                    <td>@book.Genre</td>
+                    <td>@book.Price</td>
+                    <td>@book.PublishDate</td>
+                </tr>
+
+            }
+        </table>
+    </div>
+}

@@ -5,7 +5,7 @@ namespace mvc_unit_books.Repository
     public class BooksRepository
     {
 
-		private static List<Book> book_list;
+		public static List<Book> book_list;
 		public BooksRepository()
         {
 			if(book_list == null)
@@ -25,7 +25,7 @@ namespace mvc_unit_books.Repository
 			};
 		}
 
-		public void CreateBook(Book new_book)
+		public static void CreateBook(Book new_book)
         {
 			book_list.Add(new_book);
         }

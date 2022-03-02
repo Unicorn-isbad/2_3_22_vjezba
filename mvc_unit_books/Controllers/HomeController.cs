@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using mvc_unit_books.Models;
+using mvc_unit_books.Repository;
 using System.Diagnostics;
 
 namespace mvc_unit_books.Controllers
@@ -15,6 +16,7 @@ namespace mvc_unit_books.Controllers
 
         public IActionResult Index()
         {
+            ViewData["Books"] = BooksRepository.book_list;
             return View();
         }
 

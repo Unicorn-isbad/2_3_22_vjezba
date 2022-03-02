@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using mvc_unit_books.Models;
+using mvc_unit_books.Repository;
 
 namespace mvc_unit_books.Controllers
 {
@@ -15,8 +16,8 @@ namespace mvc_unit_books.Controllers
         [HttpPost]
         public IActionResult Create(Book new_book)
         {
-
-            return View();
+            BooksRepository.CreateBook(new_book);
+            return RedirectToAction("Index", "Home");
         }
     }
 }
